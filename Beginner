@@ -1,0 +1,21 @@
+--Day 1
+SELECT *
+FROM orders
+LIMIT 5;
+
+--second question
+SELECT order_id
+FROM orders
+WHERE ship_mode ='Second Class'
+--3
+SELECT *
+FROM orders
+WHERE Discount >.2;
+--4
+SELECT *
+FROM Orders
+WHERE Sales > 500;
+--5
+SELECT DISTINCT product_name
+FROM products
+WHERE category ='Office Supplies';
