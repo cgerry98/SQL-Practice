@@ -19,3 +19,30 @@ WHERE Sales > 500;
 SELECT DISTINCT product_name
 FROM products
 WHERE category ='Office Supplies';
+
+--DAY 2
+--6
+SELECT *
+FROM orders
+WHERE  order_date BETWEEN'01-01-2017' AND '12-31-2017' ;
+
+ALTERNATIVE
+SELECT *
+FROM orders
+WHERE order_date>='01-01-2017'
+AND
+order_date< '2018-01-01'
+
+OR
+SELECT *
+FROM orders
+WHERE EXTRACT(YEAR FROM order_date) = 2017;
+
+--7
+SELECT locations.region, SUM(orders.sales) total_sales
+FROM orders
+LEFT JOIN locations
+ON orders.postal_code = locations.postal_code
+GROUP BY locations.region
+ORDER BY total_sales DESC;
+
