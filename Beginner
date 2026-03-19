@@ -38,6 +38,7 @@ SELECT *
 FROM orders
 WHERE EXTRACT(YEAR FROM order_date) = 2017;
 
+--Day 3
 --7
 SELECT locations.region, SUM(orders.sales) total_sales
 FROM orders
@@ -45,4 +46,25 @@ LEFT JOIN locations
 ON orders.postal_code = locations.postal_code
 GROUP BY locations.region
 ORDER BY total_sales DESC;
+
+--8
+SELECT p.category, SUM(o.profit) AS total_profit
+FROM orders AS o
+LEFT JOIN products AS p
+ON o.product_id=p.product_id
+GROUP BY p.category
+
+--9
+SELECT ship_mode,COUNT(DISTINCT order_id) AS number_orders 
+FROM orders
+GROUP BY ship_mode
+ORDER BY number_orders DESC;
+
+--10
+SELECT p.sub_category,AVG(o.sales) AS avg_sales
+FROM orders AS o
+LEFT JOIN products AS p
+ON o.product_id = p.product_id
+GROUP BY p.sub_category
+ORDER BY AVG(o.sales) DESC
 
